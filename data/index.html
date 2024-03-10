@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+    <title>Dashboard | Pool Heater</title>
+</head>
+<body>
+    <div class="dashboard">
+        <h3>System Status</h3>
+        <p><b>Uptime:</b> <span id="controller-uptime">—</span></p>
+        <p><b>Firmware version:</b> <span id="firmware-version">—</span></p>
+        <p><b>Enclosure Temp:</b> <span id="enclosure-temp">—</span></p>
+        <p><b>Local Time:</b> <span id="local-time">—</span></p>
+        <br>
+        <h3>Pump Control</h3>
+        <p><b>Status:</b> <span id="pump-status">—</span></p>
+        <div>
+            <p><b>Pool Temp:</b> <span id="pool-temp">—</span></p>
+            <p id="pool-temp-time-wrapper" style="margin-top: 0;"><span id="pool-temp-time">Initializing</span></p>
+        </div>
+        <br>
+        <p><b>Target Temp:</b> <span id="target-temp">—</span></p>
+        <p><b>Input Temp:</b> <span id="input-temp">—</span></p>
+        <p><b>Output Temp:</b> <span id="output-temp">—</span></p>
+        <p><b>Flow Rate:</b> <span id="flow-rate">—</span></p>
+        <p><b>Energy Capture:</b> <span id="energy-capture">—</span></p>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Maintenance | Pool Heater</title>
+</head>
+<body>
+    <div class="maintenance">
+        <h3>Maintenance Logs</h3>
+        <div id="logListWrapper" style="position: relative;">
+            <div id="loadingIndicator">Loading...</div>
+            <ul id="logList">
+                <!-- Log entries will be dynamically inserted here -->
+            </ul>
+        </div>
+    </div>
+    <script>
+        function fetchLogs() {
+            // Define a color mapping based on log level
+            const levelColors = {
+                'INFO': '#9FE2BF',
+                'WARN': '#FF7F50',
+                'ERROR': '#DE3163',
+                'DEBUG': '#CCCCFF'
+            };
+
+            // Default color if log level not in mapping
+            const defaultColor = '#bdbdbd';
+
+            document.getElementById('loadingIndicator').style.display = 'block';
+            fetch('/api/logs')
+                .then(response => response.json())
+                .then(logs => {
+                    const logList = document.getElementById('logList');
+                    logList.innerHTML = '';
+                    logs.forEach(log => {
+
+                        // Set the color based on the log level, or use the default color
+                        const logColor = levelColors[log.level] || defaultColor;
+
+                        const logEntry = document.createElement('li');
+                        logEntry.classList.add('log-item');
+                        logEntry.innerHTML = `<p class='log-message' style='color: ${logColor};'>${log.message}</p><p class='log-meta'><strong>${log.level}</strong> - ${log.time}ms</p>`;
+                        logList.appendChild(logEntry);
+                    });
+                })
+                .catch(error => {
+                    console.error('Error fetching logs:', error);
+                    document.getElementById('logList').innerHTML = '<li>Error fetching logs</li>';
+                })
+                .finally(() => {
+                    document.getElementById('loadingIndicator').style.display = 'none';
+                });
+        }
+        fetchLogs();
+        setInterval(fetchLogs, 10000);
+    </script>
+</body>
+</html>

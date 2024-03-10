@@ -1,0 +1,53 @@
+body {
+    background-color: #121212;
+    color: #bdbdbd;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 20px;
+}
+
+.dashboard, .maintenance {
+    max-width: 960px;
+    margin: 0 auto;
+}
+
+#logListWrapper {
+    position: relative;
+    min-height: 100px; /* Ensures there's space for the loading indicator */
+}
+
+#loadingIndicator {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: none; /* Hide it initially */
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent overlay */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+#logList {
+  list-style: none;
+  padding: 0;
+}
+
+.log-item {
+  background-color: #1d1d1d;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.log-message {
+  margin: 0 0 5px 0;
+  font-weight: 600;
+}
+
+.log-meta {
+  margin: 0;
+  font-size: 0.8em;
+  color: #666;
+}
